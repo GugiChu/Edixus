@@ -9,8 +9,32 @@ const videos = [
 
 const VideoCarousel = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isMuted, setIsMuted] = useState(true);
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
+  const videoRefs = useRef([]);
+
+  useEffect(() => {
+    // Programmatic play/pause based on activeIndex
+    videoRefs.current.forEach((video, index) => {
+      if (video) {
+        if (index === activeIndex) {
+          // Play active video
+          video.currentTime = 0; // Optional: restart if desired, or remove to resume
+          const playPromise = video.play();
+          if (playPromise !== undefined) {
+            playPromise.catch((error) => {
+              console.log("Autoplay prevented:", error);
+            });
+          }
+        } else {
+          // Pause others
+          video.pause();
+          // video.currentTime = 0; // Optional: reset others
+        }
+      }
+    });
+  }, [activeIndex]);
 
   const nextSlide = () => {
     setActiveIndex((prev) => (prev + 1) % videos.length);
@@ -83,16 +107,17 @@ const VideoCarousel = () => {
               <div key={index} className={`slide ${position}`}>
                 <div className="video-wrapper">
                   <video
+                    ref={(el) => (videoRefs.current[index] = el)}
                     src={video}
-                    // Only autoplay the active slide
-                    autoPlay={isActive}
+                    // Remove autoPlay prop, controlled via useEffect
+                    // autoPlay={isActive}
+                    autoPlay={false} // Managed by ref
                     // Preload active & neighbors
                     preload={shouldPreload}
-                    muted
+                    muted={isMuted}
                     loop
                     playsInline
                     className="carousel-video"
-                  // Add ref if needed, or just rely on React re-rendering attributes
                   />
                   {/* Overlay for inactive slides to make them darker */}
                   {position !== "active" && (
@@ -128,6 +153,29 @@ const VideoCarousel = () => {
               strokeLinejoin="round"
             />
           </svg>
+        </button>
+
+
+        {/* Audio Control Button - Fixed for entire carousel */}
+        <button
+          className="audio-control-btn"
+          onClick={() => setIsMuted(!isMuted)}
+          aria-label={isMuted ? "Unmute" : "Mute"}
+        >
+          {isMuted ? (
+            // Muted Icon
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M11 5L6 9H2v6h4l5 4V5z" />
+              <line x1="23" y1="9" x2="17" y2="15" />
+              <line x1="17" y1="9" x2="23" y2="15" />
+            </svg>
+          ) : (
+            // Unmuted Icon
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+              <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07" />
+            </svg>
+          )}
         </button>
       </div>
 
@@ -299,10 +347,33 @@ const VideoCarousel = () => {
   justify-content: center;
   cursor: pointer;
   transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease,
-    background-color 0.25s ease;
-  box-shadow: 0 0.75rem 1.25rem rgba(0,0,0,0.3);
+    box-shadow: 0 0.75rem 1.25rem rgba(0,0,0,0.3);
+}
+
+.audio-control-btn {
+  position: absolute;
+  bottom: 2rem;
+  right: clamp(1rem, 8vw, 20%);
+  z-index: 25;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: rgba(20, 20, 20, 0.6);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.audio-control-btn:hover {
+  background: rgba(255, 172, 28, 0.9);
+  border-color: var(--accent-orange);
+  color: #000;
+  transform: scale(1.1);
 }
 
 .nav-btn:hover {
@@ -365,6 +436,11 @@ const VideoCarousel = () => {
   .nav-btn.next {
     right: 2rem;
   }
+  
+  .audio-control-btn {
+    right: 2rem;
+    bottom: 1rem;
+  }
 }
 
 /* ================= MOBILE ================= */
@@ -416,10 +492,17 @@ const VideoCarousel = () => {
   .nav-btn.next {
     right: 1rem;
   }
+
+  .audio-control-btn {
+    right: 1rem;
+    bottom: 1rem;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
 }
 
       `}</style>
-    </section>
+    </section >
   );
 };
 

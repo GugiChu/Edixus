@@ -86,10 +86,10 @@ const FAQ = () => {
 .faq-section {
   padding: 100px 24px;
   background-color: var(--bg-dark);
-  animation: fadeUp 0.8s ease forwards;
+  /* animation: fadeUp 0.8s ease forwards; */
 }
 
-@keyframes fadeUp {
+/* @keyframes fadeUp {
   from {
     opacity: 0;
     transform: translateY(40px);
@@ -98,7 +98,7 @@ const FAQ = () => {
     opacity: 1;
     transform: translateY(0);
   }
-}
+} */
 
 .faq-container {
   max-width: 1200px;
@@ -150,7 +150,7 @@ const FAQ = () => {
   justify-content: space-between;
   gap: 16px;
   margin-top: 16px;
-  animation: fadeUp 1s ease forwards;
+  /* animation: fadeUp 1s ease forwards; */
 }
 
 .cta-text {
@@ -195,7 +195,7 @@ const FAQ = () => {
   overflow: hidden;
   cursor: pointer;
   transition: background-color 0.25s ease, transform 0.25s ease;
-  animation: fadeUp 0.6s ease forwards;
+  /* animation: fadeUp 0.6s ease forwards; */
 }
 
 .faq-item:hover {

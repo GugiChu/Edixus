@@ -13,14 +13,14 @@ const Hero = () => {
 
         {/* Main Heading */}
         <h1 className="hero-heading">
-          Every Great Story
+          Premium Brands Needs
           {/* <span className="icon-wrapper">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M12 2L14.39 9.61L22 12L14.39 14.39L12 22L9.61 14.39L2 12L9.61 9.61L12 2Z" fill="white" />
             </svg>
           </span> */}
           <br />
-          Deserves a Great Editor.
+          A Creative Editor.
         </h1>
 
         {/* CTA Buttons */}

@@ -157,10 +157,10 @@ const Contact = () => {
   background-color: var(--bg-dark);
   display: flex;
   justify-content: center;
-  animation: fadeUp 0.8s ease forwards;
+  /* animation: fadeUp 0.8s ease forwards; */
 }
 
-@keyframes fadeUp {
+/* @keyframes fadeUp {
   from {
     opacity: 0;
     transform: translateY(40px);
@@ -169,7 +169,7 @@ const Contact = () => {
     opacity: 1;
     transform: translateY(0);
   }
-}
+} */
 
 .contact-container {
   width: 100%;
@@ -222,7 +222,7 @@ const Contact = () => {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  animation: fadeUp 1s ease forwards;
+  /* animation: fadeUp 1s ease forwards; */
 }
 
 .form-row {

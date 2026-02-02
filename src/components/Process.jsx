@@ -85,7 +85,7 @@ const Process = () => {
   overflow: hidden;
 
   /* animation on load */
-  animation: imageReveal 1s ease forwards;
+  /* animation: imageReveal 1s ease forwards; */
 }
 
 .process-img {
@@ -110,9 +110,9 @@ const Process = () => {
   flex-direction: column;
   gap: 32px;
 
-  animation: contentReveal 1s ease forwards;
+  /* animation: contentReveal 1s ease forwards;
   animation-delay: 0.2s;
-  opacity: 0;
+  opacity: 1; */
 }
 
 /* label */
@@ -204,38 +204,12 @@ const Process = () => {
 /* ===============================
    ANIMATIONS
 ================================ */
-@keyframes imageReveal {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
   }
 }
-
-@keyframes contentReveal {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes pulse {
-  0% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.4); opacity: 0.6; }
-  100% { transform: scale(1); opacity: 1; }
-}
-
-/* ===============================
-   TABLET
-================================ */
-@media (max-width: 1024px) {
   .process-container {
     gap: 40px;
   }

@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 import logo from '../assets/logo.jpg';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const isHome = location.pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,20 +40,23 @@ const Navbar = () => {
         {/* Desktop Links */}
         <ul className="nav-links">
           <li>
-            <a href="#home">Home</a>
+            <a href={isHome ? "#home" : "/#home"}>Home</a>
           </li>
           <li>
-            <a href="#work">Work</a>
+            <a href={isHome ? "#work" : "/#work"}>Work</a>
           </li>
           <li>
-            <a href="#process">Process</a>
+            <a href={isHome ? "#process" : "/#process"}>Process</a>
           </li>
           <li>
-            <a href="#testimonials">Testimonials</a>
+            <a href={isHome ? "#testimonials" : "/#testimonials"}>Testimonials</a>
+          </li>
+          <li>
+            <Link to="/releases">Releases</Link>
           </li>
         </ul>
 
-        <a href="#contact" className="contact-btn desktop-only">Contact us</a>
+        <a href={isHome ? "#contact" : "/#contact"} className="contact-btn desktop-only">Contact us</a>
 
         {/* Mobile Toggle */}
         <button
@@ -69,27 +75,32 @@ const Navbar = () => {
       <div className={`mobile-menu ${mobileMenuOpen ? "open" : ""}`}>
         <ul className="mobile-links">
           <li>
-            <a href="#home" onClick={() => setMobileMenuOpen(false)}>
+            <a href={isHome ? "#home" : "/#home"} onClick={() => setMobileMenuOpen(false)}>
               Home
             </a>
           </li>
           <li>
-            <a href="#work" onClick={() => setMobileMenuOpen(false)}>
+            <a href={isHome ? "#work" : "/#work"} onClick={() => setMobileMenuOpen(false)}>
               Work
             </a>
           </li>
           <li>
-            <a href="#process" onClick={() => setMobileMenuOpen(false)}>
+            <a href={isHome ? "#process" : "/#process"} onClick={() => setMobileMenuOpen(false)}>
               Process
             </a>
           </li>
           <li>
-            <a href="#testimonials" onClick={() => setMobileMenuOpen(false)}>
+            <a href={isHome ? "#testimonials" : "/#testimonials"} onClick={() => setMobileMenuOpen(false)}>
               Testimonials
             </a>
           </li>
+          <li>
+            <Link to="/releases" onClick={() => setMobileMenuOpen(false)}>
+              Releases
+            </Link>
+          </li>
         </ul>
-        <a href="#contact" className="contact-btn mobile-btn" onClick={() => setMobileMenuOpen(false)}>Contact us</a>
+        <a href={isHome ? "#contact" : "/#contact"} className="contact-btn mobile-btn" onClick={() => setMobileMenuOpen(false)}>Contact us</a>
       </div>
 
       <style>{`

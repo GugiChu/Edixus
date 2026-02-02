@@ -72,7 +72,7 @@ button {
 }
 
 /* Animation Utilities */
-@keyframes fadeIn {
+/* @keyframes fadeIn {
   from {
     opacity: 0;
     transform: translateY(20px);
@@ -86,7 +86,7 @@ button {
 
 .animate-fade-in {
   animation: fadeIn 0.8s ease-out forwards;
-}
+} */
 
 .delay-100 {
   animation-delay: 0.1s;
