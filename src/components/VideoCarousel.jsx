@@ -74,16 +74,25 @@ const VideoCarousel = () => {
             )
               position = "prev";
 
+            // Optimization Logic
+            const isActive = position === "active";
+            const isNear = position === "next" || position === "prev";
+            const shouldPreload = isActive || isNear ? "auto" : "none";
+
             return (
               <div key={index} className={`slide ${position}`}>
                 <div className="video-wrapper">
                   <video
                     src={video}
-                    autoPlay
+                    // Only autoplay the active slide
+                    autoPlay={isActive}
+                    // Preload active & neighbors
+                    preload={shouldPreload}
                     muted
                     loop
                     playsInline
                     className="carousel-video"
+                  // Add ref if needed, or just rely on React re-rendering attributes
                   />
                   {/* Overlay for inactive slides to make them darker */}
                   {position !== "active" && (

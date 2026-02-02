@@ -30,7 +30,7 @@ const Navbar = () => {
             <img src={logo} alt="Logo" width="32" height="32" />
           </div>
           <span className="logo-text">
-            Edixus<span className="logo-suffix"></span>
+            Anmol Anuragi<span className="logo-suffix"></span>
           </span>
         </div>
 

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Loader from './components/common/Loader';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -34,17 +35,44 @@ const App = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // Auth Check
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      setLoading(false);
     });
-    return () => unsubscribe();
+
+    // Asset Loading Check
+    const handleLoad = () => {
+      // Small delay to ensure smooth transition even if fast
+      setTimeout(() => setLoading(false), 800);
+    };
+
+    if (document.readyState === 'complete') {
+      handleLoad();
+    } else {
+      window.addEventListener('load', handleLoad);
+    }
+
+    // Safety Timeout (max 4 seconds)
+    const timeoutId = setTimeout(() => {
+      setLoading(false);
+    }, 4000);
+
+    return () => {
+      unsubscribe();
+      window.removeEventListener('load', handleLoad);
+      clearTimeout(timeoutId);
+    };
   }, []);
 
-  if (loading) return null;
+  // Show Loader until everything is ready
+  // Note: We render children immediately behind logic but overlay covers them? 
+  // Text says "till all assets get fetched", so we can return null OR overlay. 
+  // Overlay is better for Transition. Let's return App with Loader on top.
+
 
   return (
     <Router>
+      <Loader isLoading={loading} />
       <div className="app-container">
         <Routes>
           <Route path="/" element={<Home />} />

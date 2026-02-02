@@ -8,7 +8,7 @@ const Footer = () => {
                     <a href="mailto:hello@anmol.com" className="footer-email">anmoltypebusiness@gmail.com</a>
                 </div>
                 <div className="footer-right">
-                    <p>&copy; {new Date().getFullYear()} The Gugichu Pvt. Ltd. <span className="credit">Created by <a href="https://github.com/gugichu" target="_blank" rel="noopener noreferrer" className="creator-link">Gaurav Chhajer</a></span></p>
+                    <p>&copy; {new Date().getFullYear()} The Gugichu Pvt. Ltd.</p>
                 </div>
             </div>
 
