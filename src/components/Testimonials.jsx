@@ -1,11 +1,11 @@
 import React from 'react';
 
 const testimonials = [
-    '/ss/1.jpeg',
-    '/ss/2.jpeg',
-    '/ss/3.jpeg',
-    '/ss/5.jpeg',
-    '/ss/6.jpeg',
+    '/ss/1.webp',
+    '/ss/2.webp',
+    '/ss/3.webp',
+    '/ss/5.webp',
+    '/ss/6.webp',
 ];
 
 // Pre-define rotations for a consistent messy stack look
