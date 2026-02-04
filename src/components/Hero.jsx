@@ -25,7 +25,7 @@ const Hero = () => {
 
         {/* CTA Buttons */}
         <div className="cta-group">
-          <a href="https://www.instagram.com/edixus" target="_blank" rel="noopener noreferrer" className="btn-primary">Editing Work</a>
+          <a href="https://www.instagram.com/anmol_type" target="_blank" rel="noopener noreferrer" className="btn-primary">Editing Work</a>
           <a href="#faq" className="btn-secondary">How it works</a>
         </div>
 

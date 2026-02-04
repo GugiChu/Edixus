@@ -4,6 +4,13 @@ import Footer from './Footer';
 
 const releases = [
   {
+    videoUrl: 'https://youtu.be/4-JVYjTx5Bk',
+    title: 'MOST Viral Frames Animations inside Capcut! 🔥🔥 (detailed...',
+    views: '3.8K views',
+    time: '20 hours ago',
+    duration: '25:28'
+  },
+  {
     videoUrl: 'https://youtu.be/P3JOrFOSPS0',
     title: 'Become a CAPCUT PRO🔥 in 15 Minutes!',
     views: '23K views',
@@ -63,8 +70,38 @@ const Releases = () => {
       <Navbar />
       <section className="releases-section">
         <div className="releases-container">
+          <div className="channel-header-wrapper">
+            {/* Banner */}
+            <div className="channel-banner"></div>
+
+            {/* Profile Section */}
+            <a
+              href="https://www.youtube.com/@Anmol_type"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="channel-profile-link"
+            >
+              <div className="channel-profile">
+                <div className="avatar-wrapper">
+                  <img src="/pfp.jpg" alt="Anmol_type" className="channel-avatar" />
+                </div>
+
+                <div className="profile-info">
+                  <h1 className="channel-name">Anmol_type.</h1>
+                  <div className="channel-meta">
+                    <span className="meta-text">@Anmol_type</span>
+                    <span className="meta-dot">•</span>
+                    <span className="meta-text">16.7K subscribers</span>
+                    <span className="meta-dot">•</span>
+                    <span className="meta-text">40 videos</span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+
           <div className="section-header">
-            <h1 className="section-heading">Latest Releases</h1>
+            <h2 className="section-heading">Latest Releases</h2>
           </div>
 
           <div className="video-grid">
@@ -106,12 +143,95 @@ const Releases = () => {
           }
 
           .releases-container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
+            padding: 0 40px; /* Added margins */
           }
+
+          /* Channel Header */
+          .channel-header-wrapper {
+             margin-bottom: 48px;
+          }
+
+          .channel-banner {
+            width: 100%;
+            height: 200px;
+            background-image: url('https://yt3.googleusercontent.com/k6eqHVkxwVc_mJlCyffW46nebeZo_HZjJZ_UgqeGEjOSzyh2HcsQOpX3hQlTtTRCGxANRiVRb-s=w2276-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj');
+            background-size: cover;
+            background-position: center;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+          }
+
+          .channel-profile-link {
+            text-decoration: none;
+            display: inline-block;
+          }
+
+          .channel-profile {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            padding: 0 16px;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+          }
+          
+          .channel-profile-link:hover .channel-profile {
+             opacity: 0.9;
+             transform: translateX(4px);
+          }
+
+          .avatar-wrapper {
+            flex-shrink: 0;
+          }
+
+          .channel-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid transparent; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+          }
+
+          .profile-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+          }
+
+          .channel-name {
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin: 0;
+            color: #fff;
+          }
+
+          .channel-meta {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 6px;
+            color: #aaa;
+            font-size: 0.95rem;
+          }
+          
+          .meta-dot {
+             font-size: 0.4rem;
+             opacity: 0.7;
+             position: relative;
+             top: -1px;
+          }
+
 
           .section-header {
             margin-bottom: 32px;
+            padding: 0 16px; /* Align with profile padding */
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 32px;
           }
 
           .section-heading {
@@ -208,12 +328,46 @@ const Releases = () => {
           }
           
           @media (max-width: 768px) {
+             .releases-section {
+                padding-top: 80px; /* Reduced top padding on mobile */
+                padding-left: 16px;
+                padding-right: 16px;
+             }
+             .releases-container {
+                padding: 0;
+             }
+
+             .channel-banner {
+                height: 100px; /* Responsive height for mobile */
+             }
+             
+             .channel-profile {
+               flex-direction: column;
+               align-items: center;
+               text-align: center;
+               gap: 12px;
+             }
+             
+             .channel-avatar {
+               width: 100px;
+               height: 100px;
+             }
+             
+             .profile-info {
+               align-items: center;
+             }
+             
+             .channel-meta {
+                justify-content: center;
+             }
+             
+             .channel-profile-link:hover .channel-profile {
+                 transform: none; /* efficient on mobile */
+             }
+             
              .video-grid {
                 grid-template-columns: 1fr;
                 gap: 32px;
-             }
-             .releases-section {
-                padding-top: 100px;
              }
           }
         `}</style>

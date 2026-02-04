@@ -210,17 +210,16 @@ const Process = () => {
     transition: none !important;
   }
 }
+/* ===============================
+   TABLET / SMALL LAPTOP
+================================ */
+@media (max-width: 1024px) {
   .process-container {
     gap: 40px;
   }
 
   .section-heading {
     font-size: 2.5rem;
-  }
-
-  .step-details {
-    flex-direction: column;
-    gap: 8px;
   }
 }
 
@@ -233,24 +232,36 @@ const Process = () => {
   }
 
   .process-container {
-    flex-direction: column;
+    flex-direction: column; 
     gap: 40px;
   }
 
   .process-image-wrapper {
     width: 100%;
-    height: 350px;
+    height: auto;
+    aspect-ratio: 16/9;
+    max-height: 400px;
     border-radius: 20px;
   }
 
   .section-heading {
     font-size: 2rem;
     line-height: 1.2;
+    text-align: center; /* Center align on mobile for better look */
+  }
+  
+  .section-label {
+    justify-content: center; /* Center label too */
   }
 
   .step-item {
     gap: 16px;
     padding: 24px 0;
+  }
+
+  .step-details {
+    flex-direction: column;
+    gap: 8px;
   }
 
   .step-title {
