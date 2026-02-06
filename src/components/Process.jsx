@@ -26,7 +26,7 @@ const Process = () => {
         {/* Left: Image */}
         <div className="process-image-wrapper">
           <img
-            src="https://smoggy-violet-vwxu7nvkyc.edgeone.app/IMG_7250.JPG.jpeg"
+            src="/img.jpeg"
             alt="Process"
             className="process-img"
             loading="lazy"
